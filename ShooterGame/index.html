@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooter Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mainMenu none">
+        <img src="Sprites/shooter.png" alt="">
+        <input type="text" placeholder="Input Username">
+        <select name="" id="difficulty">
+            <option value="">Select Level</option>
+            <option value="ez">easy</option>
+        </select>
+        <div class="selector">
+            <label for="gun1">
+                <img src="Sprites/gun1.png" alt="">
+                <input type="radio" name="gun" id="gun1">
+            </label>
+            <label for="gun2">
+                <img src="Sprites/gun2.png" alt="">
+                <input type="radio" name="gun" id="gun2">
+            </label>
+        </div>
+        <div class="selector">
+            <label for="target1">
+                <img src="Sprites/target1.png" alt="">
+                <input type="radio" name="target" id="target1" class="custom-radio">
+            </label>
+            <label for="target2">
+                <img src="Sprites/target2.png" alt="">
+                <input type="radio" name="target" id="target2">
+            </label>
+            <label for="target3">
+                <img src="Sprites/target3.png" alt="">
+                <input type="radio" name="target" id="target3">
+            </label>
+        </div>
+        <div class="button">
+            <button class="btn play">Play Game</button>
+            <button class="btn instruction">Instruction</button>
+        </div>
+    </div>
+
+    <!-- Image Assets -->
+
+    <img src="Sprites/background.jpg" alt="" class="none" id="backgroundGame">
+    <img src="Sprites/pointer.png" alt="" id="pointer" class="none">
+    <img src="Sprites/target1.png" alt="" id="targetOne" class="none">
+    <img src="Sprites/target2.png" alt="" id="targetTwo" class="none">
+    <img src="Sprites/target3.png" alt="" id="targetThree" class="none">
+    <img src="Sprites/gun1.png" alt="" id="gunOne" class="none">
+    <img src="Sprites/gun2.png" alt="" id="gunTwo" class="none">
+
+    <!-- Layout -->
+    <div class="gameContainer">
+        <div class="gameLayout">
+            <canvas id="kanvas" width="1000" height="600" class="">
+                Your Browser doesn't support html canvas
+            </canvas>
+            <div class="leaderboard">
+                <h2>LEADERBOARD</h2>
+                <select name="sort" id="">
+                    <option value="">Sort By Score</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
