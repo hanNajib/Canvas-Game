@@ -3,7 +3,13 @@
  */
 const canvas = document.getElementById('kanvas')
 const ctx = canvas.getContext('2d')
+const welcome = document.getElementById('welcome')
+const gameContainer = document.getElementById('gameContainer')
 const backgroundImage = document.getElementById('backgroundGame')
+let gameTime 
+let score = 0
+let selectedGun
+let selectedTarget
 const pointerImage = new Image()
 pointerImage.src = './Sprites/pointer.png'
 const targetImage = {
@@ -25,12 +31,21 @@ let gunPointer = {
     x: 400
 }
 
-window.onload = init
-
-function init() {
+function gameStart() {
+    let gunValue = document.querySelector('input[name="gun"]:checked').value
+    let targetValue = document.querySelector('input[name="target"]:checked').value
+    selectedGun =  eval('gunImage.' + gunValue)
+    selectedTarget =  eval('targetImage.' + targetValue)
     gameLoop()
     pointerGun()
-    setInterval(spawnTarget, 3000); 
+    setInterval(spawnTarget, 3000);
+    setInterval(gameTimer, 1000)
+    gameTime = parseInt(document.getElementById('difficulty').value) ?? 30
+}
+
+
+function gameTimer() {
+    gameTime--
 }
 
 function gameLoop() {
@@ -40,12 +55,13 @@ function gameLoop() {
     ctx.fillStyle = '#00000080'
     ctx.fillRect(0, 0, 1000, 40)
     targets.forEach(target => target.draw())
+    stats()
     requestAnimationFrame(gameLoop)
 }
 
 function pointerGun() {
     ctx.drawImage(pointerImage, pointer.x, pointer.y)
-    ctx.drawImage(gunImage.two, gunPointer.x -50, 380, 450, 280)
+    ctx.drawImage(selectedGun, gunPointer.x -50, 380, 450, 280)
     requestAnimationFrame(pointerGun)
 }
 
@@ -76,7 +92,7 @@ class Target {
         this.ctx.save()
         this.ctx.translate(this.x, this.y)
         this.ctx.scale(this.scale, this.scale)
-        this.ctx.drawImage(targetImage.one, -75, -75, 150, 150) 
+        this.ctx.drawImage(selectedTarget, -75, -75, 150, 150) 
         this.ctx.restore()
     }}
     
@@ -102,8 +118,25 @@ canvas.addEventListener('click', (e) => {
 
         if (distance <= 75) {  
             targets.splice(i, 1);
+            score++
             break; 
+        } else {
+            gameTime -= 5
         }
     }
 });
+
+function stats() {
+    ctx.fillStyle = 'white'
+    ctx.font = 'bold 20px arial'
+    ctx.fillText('Ahmad Royhan Najib', 20, 27)
+    ctx.fillText('Score : ' + score, canvas.width / 3 * 1 + 120, 27)
+    ctx.fillText('Time : ' + gameTime, canvas.width / 3 * 2 + 200, 27)
+}
+
+function start() {
+    welcome.classList.add('none')
+    gameContainer.classList.remove('none')
+    gameStart();
+}
 
