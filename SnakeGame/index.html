@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mainMenu" id="mainMenu">
+        <center><h1>SNAKE GAME 🐍</h1></center>
+        <label for="name">
+            <h4>Nama</h4>
+            <input type="text" id="nama" oninput="document.getElementById('btn-start').disabled = this.value === '' ? true : false;">
+        </label>
+        <label for="level">
+            <h4>LEVEL</h4>
+            <select name="level" id="level">
+                <option value="3">EASY</option>
+                <option value="2">MEDIUM</option>
+                <option value="1">HARD</option>
+            </select>
+        </label>
+        <center><button class="btn" id="btn-start" disabled>Start</button></center>
+    </div>
+    <div class="leaderboard">
+        <h3 id="username"></h3>
+        <h1>LEADERBOARD</h1>
+        <center>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>nama</th>
+                        <th>level</th>
+                        <th>skor</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-data">
+                </tbody>
+            </table>
+        </center>
+    </div>
+    
+    <div class="gameScene none" id="gameScene">
+        <div class="gameContainer">
+            <canvas width="500" height="500" id="kanvas">
+                Your Browser doesn't support html canvas
+            </canvas>
+            <div id="score">0</div>
+            <button id="btn-reset" class='btn'>Reset</button>
+        </div>
+        <!-- <div class="stats">
+            <h1 id="username">Nama</h1>
+        </div> -->
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

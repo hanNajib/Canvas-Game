@@ -1,0 +1,78 @@
+#kanvas {
+    border: 3px solid black;
+    margin-top: 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+#score {
+    font-size: 2rem;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.leaderboard {
+    width: 25vw;
+    height: 500px;
+    background: #e7e7e7;
+    position: fixed;
+    top: 1rem;
+    left: 4rem;
+    border: 3px solid black;
+}
+.stats {
+    width: 25vw;
+    height: 500px;
+    background: #e7e7e7;
+    position: fixed;
+    top: 1rem;
+    left: 4rem;
+    border: 3px solid black;
+}
+
+.none {
+    display: none;
+    visibility: hidden;
+}
+
+.mainMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+    text-align: left;
+    width: 25vw;
+    height: 500px;
+    background: #e7e7e7;
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid black;
+}
+
+.mainMenu input,
+.mainMenu select {
+    padding: 10px 20px;
+    width: 20vw;
+}
+
+table tr td,
+table tr th{
+    padding: 10px 20px;
+    border: 1px solid black;
+}
+
+table tr td{
+    font-size: .8rem;
+}
