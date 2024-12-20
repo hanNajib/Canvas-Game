@@ -5,7 +5,7 @@ const canvas = document.getElementById('kanvas')
 const ctx = canvas.getContext('2d')
 let snakeScoreData = localStorage.getItem('snake-score')
 const playerName = document.getElementById('nama')
-let leaderboard = JSON.parse(snakeScoreData).sort((a, b) => b.score - a.score) || [{name: 'hanNajib', score: '0'}]
+let leaderboard = JSON.parse(snakeScoreData).sort((a, b) => a.level - b.level || b.score - a.score) || [{name: 'hanNajib', score: '0'}]
 const scoreText = document.getElementById('score')
 const resetBtn = document.getElementById('btn-reset')
 const startBtn = document.getElementById('btn-start')
@@ -42,7 +42,7 @@ function leaderboardData() {
         'Medium',
         'Easy'
     ]
-    let leaderboardLoop = leaderboard?.map((data, index) => {
+    let leaderboardLoop = leaderboard?.slice(0, 7).map((data, index) => {
      return `
             <tr>
                         <td>${index + 1}</td>
@@ -108,7 +108,7 @@ class Food {
     }
 
     draw() {
-        console.log(this.x)
+        // console.log(this.x)
         this.context.fillStyle = foodColor
         this.context.fillRect(this.x, this.y, unitSize, unitSize)
     }
@@ -128,13 +128,13 @@ function moveSnake(){
             score += 1;
             scoreText.textContent = score;
             foodEaten = true;
-            foods.splice(i, 1); // Menghapus makanan yang dimakan
+            foods.splice(i, 1);
             foods.push(new Food(ctx)); 
             break;
         }
     }
     if (!foodEaten) {
-        snake.pop(); // Hanya hapus ekor jika makanan tidak dimakan
+        snake.pop(); 
     }
     
 }

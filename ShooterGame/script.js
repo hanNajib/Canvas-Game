@@ -6,6 +6,7 @@ const ctx = canvas.getContext('2d')
 const welcome = document.getElementById('welcome')
 const gameContainer = document.getElementById('gameContainer')
 const backgroundImage = document.getElementById('backgroundGame')
+let playerName = document.getElementById('playerName')
 let gameTime 
 let score = 0
 let selectedGun
@@ -129,7 +130,7 @@ canvas.addEventListener('click', (e) => {
 function stats() {
     ctx.fillStyle = 'white'
     ctx.font = 'bold 20px arial'
-    ctx.fillText('Ahmad Royhan Najib', 20, 27)
+    ctx.fillText(playerName.value, 20, 27)
     ctx.fillText('Score : ' + score, canvas.width / 3 * 1 + 120, 27)
     ctx.fillText('Time : ' + gameTime, canvas.width / 3 * 2 + 200, 27)
 }

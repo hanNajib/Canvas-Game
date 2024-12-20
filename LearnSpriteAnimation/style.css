@@ -1,0 +1,9 @@
+#kanvasku {
+    width: 600px;
+    height: 600px;
+    border: 3px solid black;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 20px;
+}
