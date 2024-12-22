@@ -1,0 +1,17 @@
+#kanvasku {
+    border: 2px solid black;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000e38;
+    flex-direction: column;
+}
+
+h1, h3 {
+    color: #0033cd;
+    font-weight: bold;
+}

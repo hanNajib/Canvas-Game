@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #001842;
+}
+
+#kanvasku {
+    border: 3px solid #00112f;
+}
+
