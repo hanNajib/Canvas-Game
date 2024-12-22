@@ -22,7 +22,7 @@ function drawBoard() {
     board.forEach((cell, i) => {
         if(cell) {
             const x = (i % 3) * gridSize + gridSize / 2
-            const y = 65 + gridSize * Math.floor(i / 3)
+            const y = (gridSize * 0.63) + gridSize * Math.floor(i / 3)
             ctx.font = '40px Arial'
             ctx.textAlign = "center"
             ctx.textBaseline = 'center'
