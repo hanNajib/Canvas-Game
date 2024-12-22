@@ -27,7 +27,6 @@ function drawBoard() {
             ctx.textAlign = "center"
             ctx.textBaseline = 'center'
             ctx.fillText(cell, x, y)
-            console.log(i)
         }
     })
 }
@@ -37,7 +36,6 @@ canvas.addEventListener('click', function(event) {
     const x = Math.floor(event.offsetX / gridSize)
     const y = Math.floor(event.offsetY / gridSize)
     const index = y * 3 + x
-    console.log(board)
 
     if(!board[index]) {
         board[index] = currentPlayer;
