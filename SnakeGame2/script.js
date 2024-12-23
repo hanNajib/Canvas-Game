@@ -14,9 +14,15 @@ const gridSize = GAME_WIDTH / gridX
 let xVelocity = gridSize
 let yVelocity = 0
 let running = false
-let score = 0
+let score = 6
+let pellet = 0
+let gold = false
 let foods = []
+let rewind = []
 let snake = [
+    {x: gridSize * 23, y: 240 },
+    {x: gridSize * 22, y: 240 },
+    {x: gridSize * 21, y: 240 },
     {x: gridSize * 20, y: 240 },
     {x: gridSize * 19, y: 240},
     {x: gridSize * 18, y: 240},
@@ -65,16 +71,31 @@ function clearBoard() {
 
 
 class Food {
-    constructor(context) {
+    constructor(context, gold) {
         this.context = context
         this.x = Math.round((Math.random() * (GAME_WIDTH - gridSize)) / gridSize) * gridSize;
-        this.y = Math.round((Math.random() * (GAME_HEIGHT - gridSize)) / gridSize) * gridSize;        
+        this.y = Math.round((Math.random() * (GAME_HEIGHT - gridSize)) / gridSize) * gridSize;  
+        this.gold = gold   
+        
+        if(this.gold) {
+            setTimeout(() => {
+                const index = foods.indexOf(this)
+                if(index > -1) {
+                    foods.splice(1, index)
+                    gold = false
+                }
+            }, 5000);
+        }
     }
 
     draw() {
-        // console.log(this.x)
-        this.context.fillStyle = 'red'
-        this.context.fillRect(this.x, this.y, gridSize, gridSize)
+        if(this.gold) {
+            this.context.fillStyle = 'yellow'
+            this.context.fillRect(this.x, this.y, gridSize, gridSize)
+        } else {
+            this.context.fillStyle = 'red'
+            this.context.fillRect(this.x, this.y, gridSize, gridSize)
+        }
     }
 }
 
@@ -84,16 +105,25 @@ function drawFood() {
 }
 
 function moveSnake(){
+    rewind.push(snake)
+    // console.log(rewind)
     const head = {x: snake[0].x + xVelocity, y: snake[0].y + yVelocity}
     snake.unshift(head)
     let foodEaten = false;
     for (let i = 0; i < foods.length; i++) {
         if (snake[0].x == foods[i].x && snake[0].y == foods[i].y) {
-            score += 1;
+            pellet += 1;
+            score += gold ? 3 : 1
             scoreText.textContent = score;
             foodEaten = true;
             foods.splice(i, 1);
-            foods.push(new Food(ctx)); 
+            if(pellet % 6 == 0) {
+                foods.push(new Food(ctx, true))
+                gold = true
+            } else {
+                foods.push(new Food(ctx))
+                gold = false
+            }
             break;
         }
     }
