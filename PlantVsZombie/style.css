@@ -7,10 +7,8 @@ body {
     margin: 0;
 }
 
-#kanvasku {
-    border: 1px solid black;
-}
-
-p {
-    margin: 0;
+#canvas {
+    border: 3px solid black;
+    width: 1024px;
+    height: 1024px;
 }

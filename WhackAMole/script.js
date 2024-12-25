@@ -12,34 +12,46 @@ const textTime = document.getElementById('timer')
 const textHeart = document.getElementById('miss')
 let moleImage = new Image();
 moleImage.src = './tikus.png'
+let cursorImg = new Image();
+cursorImg.src = './hammer.png'
+cursorImg.style.mixBlendMode = 'multiply'
+
 
 let moles = {
     x: 50,
     y: 50
 }
+let cursor = {
+    x: -100,
+    y: -100,
+    width: 75
+}
 let score = 0
 let time = 30
-let heart = 3
+let heart = 10
+let interval;
 
 function animate() {
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
     displayUpdate();
     drawBackground();
     drawGrid();
-    changePosition();
     spawnMole();
+    hammer();
     checkGameOver();
+    requestAnimationFrame(animate)
 }
 
 function drawBackground() {
     ctx.beginPath();
-    ctx.fillStyle = 'lightblue'
+    ctx.fillStyle = '#9d4f00'
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
     ctx.closePath();
 }
 
 function drawGrid() {
     ctx.beginPath();
-    ctx.fillStyle = 'red'
+    ctx.fillStyle = '#5b2d00'
     ctx.fillRect(50, 50, gridSize, gridSize)
     ctx.fillRect(225, 50, gridSize, gridSize)
     ctx.fillRect(400, 50, gridSize, gridSize)
@@ -68,15 +80,18 @@ function changePosition() {
     moles.y = position[randomY]
 }
 
-animate();
-
-const interval = setInterval(() => {
-    time -= 1
+function start() {
     animate();
-}, 1000);
+    interval = setInterval(() => {
+        time -= 1
+        changePosition();
+    }, 1000);
+}
 
 canvas.addEventListener('click', (e) => {
-    checkHit(e.offsetX, e.offsetY)
+    if(interval) {
+        checkHit(e.offsetX, e.offsetY)
+    }
 })
 
 function checkHit(x, y) {
@@ -105,14 +120,17 @@ function displayUpdate() {
 function checkGameOver() {
     if(heart <= 0) {
         displayGameOver();
+        setScoreboard();
     } else if(time < 1) {
         displayWaktuHabis();
+        setScoreboard();
     }
 }
 
 function displayGameOver() {
-    ctx.fillStyle = 'black'
+    ctx.fillStyle = 'white'
     clearInterval(interval)
+    interval = null
     ctx.font = '50px Arial'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
@@ -122,8 +140,9 @@ function displayGameOver() {
 }
 
 function displayWaktuHabis() {
-    ctx.fillStyle = '#464646'
+    ctx.fillStyle = 'white'
     clearInterval(interval)
+    interval = null
     ctx.font = '50px Arial'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
@@ -131,3 +150,41 @@ function displayWaktuHabis() {
     ctx.font = '20px Arial'
     ctx.fillText('Your Score : ' + score, CANVAS_WIDTH / 2, (CANVAS_HEIGHT / 2) + 50)
 }
+
+function hammer() {
+    ctx.drawImage(cursorImg, cursor.x, cursor.y, cursor.width, cursor.width)
+}
+
+canvas.addEventListener('mousemove', function(e) {
+    cursor.x = e.offsetX - cursor.width / 2
+    cursor.y = e.offsetY - cursor.width / 2
+})
+
+
+function setScoreboard() {
+    const scoreboard = JSON.parse(localStorage.getItem('scoreboard'))?.sort((a, b) => {
+        return b.score - a.score
+    })
+
+    if(!scoreboard) {
+        localStorage.setItem('scoreboard', JSON.stringify([{
+            'nama' : usernameInput.value ?? 'guest',
+            'score' : score
+        }]))
+    } else {
+        const userScoreboard = scoreboard.find(function(val, index) {
+            return val.nama == usernameInput.value ?? 'guest'
+        })
+        if(!userScoreboard) {
+            scoreboard.push({
+                'nama' : usernameInput.value ?? 'guest',
+                'score' : score
+            })
+            localStorage.setItem('scoreboard', JSON.stringify(scoreboard))
+        } else {
+            userScoreboard.score = Math.max(score, userScoreboard.score)
+            localStorage.setItem('scoreboard', JSON.stringify(scoreboard))
+        }
+    }
+}
+

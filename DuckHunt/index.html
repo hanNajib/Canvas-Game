@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck Hunt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio src="./videoplayback_2.m4a" id="snd-shoot"></audio>
+    
+    <canvas id="canvas" class="">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <div id="menu" class="">
+       <div class="menu">
+        <h1>DUCK HUNT</h1>
+        <input type="text" id="username" placeholder=" Input Your Username">
+        <select name="" id="difficulty">
+            <option value="4000">easy</option>
+            <option value="3000">medium</option>
+            <option value="2000">hard</option>
+        </select>
+        <button id="btn-start">Start</button>
+        <button id="btn-leaderboard">Leaderboard</button>
+       </div>
+    </div>
+
+    <div id="pause" class="hidden">
+        <div class="menu">
+         <h1>Pause</h1>
+         <button id="btn-continue">Continue</button>
+         <button id="btn-menu">Back To Menu</button>
+         <button id="btn-start">Retry</button>
+        </div>
+     </div>
+
+    <div id="leaderboard" class="hidden">
+       <div class="menu">
+        <h4>Leaderboard</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nama</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="scoreboardBody">
+        </tbody>
+    </table>
+        <button id="btn-menu">Back To Menu</button>
+       </div>
+    </div>
+
+    <div id="gameOver" class="hidden">
+       <div class="menu">
+        <h1>GAME OVER!</h1>
+        <span>Your Score : <span id="scoreFinal"></span></span><br>
+        <button id="btn-menu">Back To Menu</button>
+        <button id="btn-start">Retry</button>
+        <button id="btn-leaderboard">Scoreboard</button>
+       </div>
+    </div>
+
+    <div id="stats" class="hidden">
+        <div class="stats">
+            <div id="name">
+                
+            </div>
+            <div id="miss">
+                <h4>HEART</h4>
+                <span id="heart"></span>
+            </div>
+            <div id="ducks">
+                <h4>HIT</h4>
+                <div id="duck"></div>
+            </div>
+            <div class="score">
+                <h4>SCORE</h4>
+                <div id="score"></div>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>

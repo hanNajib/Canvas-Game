@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:  #000000;
+}
+
+#canvas {
+    border: 3px solid black;
+    cursor: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#menu, #gameOver, #leaderboard, #pause{
+    position: absolute;
+}
+
+.menu {
+    text-align: center;
+    width: 30vw;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: #00ffff80;
+    border: 10px solid rgb(0, 126, 0);
+    border-radius: 5px;
+    filter: drop-shadow(5px 10px 4px #00000035);
+}
+
+button, select, input {
+    outline: none;
+    border: 1px solid black;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: rgb(0, 65, 0);
+    font-weight: bold;
+    background-color: lime;
+    cursor: pointer;
+}
+
+h4{
+    margin: 0;
+}
+
+#stats {
+    bottom: 10px;
+    position: absolute;
+    width: 1280px;
+    user-select: none;
+}
+
+.stats{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    height: 12vh;
+    justify-content: space-between;
+    padding-inline: 10px;
+    color: white;
+}
+
+#miss, .score, #name {
+    align-items: center;
+    flex: 1;
+    background-color: black;
+    border-radius: 8px;
+    border: 3px solid rgb(246, 255, 187);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#ducks {
+    flex: 5;
+    background-color: black;
+    border-radius: 8px;
+    border: 3px solid rgb(246, 255, 187);
+    padding: 10px;
+    overflow: hidden;
+}
+
+table, tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: rgb(211, 255, 207);
+    padding: 5px 10px;
+}

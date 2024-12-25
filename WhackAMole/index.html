@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Game Tikus</title>
+</head>
+<body>
+    <div id="menu" class="">
+        <div class="menu">
+            <h1>WhackAMole</h1>
+            <img src="./tikus.png" alt="" width="200px">
+            <input type="text" name="" id="input-username" placeholder="username">
+            <button id="btn-play">Play</button>
+            <button id="btn-htp">How To Play</button>
+            <button id="btn-scoreboard">Scoreboard</button>
+        </div>
+    </div>
+    <div id="game" class="none">
+        <p>Score : <span id="score">0
+        <p>Time : <span id="timer">0</span></p>
+        <p>Name : <span id="username"></span></p>
+        <p>Heart : <span id="miss">0</span></p>
+        </span></p>
+        <canvas id="kanvasku"></canvas>
+    </div>
+    <div id="scoreboard" class="none">
+        <div class="scoreboard">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nama</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="scoreboardBody">
+            </tbody>
+        </table>
+        <button id="btn-kembali">Kembali</button>
+    </div>
+    </div>
+    <div id="howToPlay" class="none">
+        <h1>How to play</h1>
+        <ol>
+            <li>Input your username</li>
+            <li>Click play Button to play</li>
+            <li>Punch the moles with hammer</li>
+            <li>Enjoy your game</li>
+        </ol>
+    </div>
+
+
+<script src="script.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>
