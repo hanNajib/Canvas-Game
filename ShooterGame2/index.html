@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Shooter Game</title>
+</head>
+<body>
+
+    <canvas id="kanvasku" class="hidden"></canvas>
+    <!-- Leaderoard -->
+     <div id="leaderboard" class="hidden">
+        <div class="leaderboard">
+            <h2>LEADERBOARD</h2>
+            <select name="sort" id="sort">
+                <option value="score">Sort By Score</option>
+            </select>
+            <table id="leaderboardTable">
+            </table>
+        </div>
+     </div>
+
+    <!-- Pause Menu -->
+     <div id="pause" class="hidden">
+        <div class="pause">
+            <h1>Game Paused</h1>
+            <button id="btn-continue">Continue</button>
+            <button id="btn-retry">Retry</button>
+            <button id="btn-menu">Back to Menu</button>
+        </div>
+    </div>
+    
+    <div id="gameOver" class="hidden">
+        <div class="pause">
+            <h1>Game Over!</h1>
+            <span id="score"></span>
+            <button id="btn-retry">Retry</button>
+            <button id="btn-menu">Back to Menu</button>
+        </div>
+     </div>
+
+    <!-- Main Menu -->
+     <div id="menu" class="">
+        <div class="menu">
+            <img src="Sprites/shooter.png" alt="">
+            <input type="text" id="username" placeholder="Input Username">
+            <select name="" id="level">
+                <option value="30">Select Level</option>
+                <option value="30">Easy</option>
+                <option value="20">Medium</option>
+                <option value="15">Hard</option>
+            </select>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <div class="selector">
+                    <label for="gun1">
+                        <img src="Sprites/gun1.png" alt="" width="100">
+                        <input type="radio" name="gun" id="gun1" value="gun1" checked>
+                    </label>
+                    <label for="gun2">
+                        <img src="Sprites/gun2.png" alt="" width="100">
+                        <input type="radio" name="gun" id="gun2" value="gun2">
+                    </label>
+                </div>
+                <div class="selector">
+                    <label for="target1">
+                        <img src="Sprites/target1.png" alt="" width="100">
+                        <input type="radio" name="target" id="target1" value="target1" checked>
+                    </label>
+                    <label for="target2">
+                        <img src="Sprites/target2.png" alt="" width="100">
+                        <input type="radio" name="target" id="target2" value="target2">
+                    </label>
+                    <label for="target3">
+                        <img src="Sprites/target3.png" alt="" width="100">
+                        <input type="radio" name="target" id="target3" value="target3">
+                    </label>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button id="btn-play">Play Game</button>
+                <button id="btn-instruction">Instruction</button>
+            </div>
+        </div>
+     </div>
+
+
+     <!-- instruction -->
+
+     <div id="instruction" class="hidden">
+        <div class="instruction">
+            <div id="btn-close">&times;</div>
+            <h2>How To Play Game</h2>
+            <ol>
+                <li>Input Username</li>
+                <li>Point The Pointer at the Target</li>
+                <li>Click to shoot</li>
+                <li>Get as many point as possible</li>
+                <li>Enjoy</li>
+            </ol>
+        </div>
+     </div>
+
+<script src="script.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>

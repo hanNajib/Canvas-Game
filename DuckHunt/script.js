@@ -189,7 +189,7 @@ class Duck {
         this.duckImage = new Image();
         this.duckImage.src = './duckhunt_various_sheet_cr-removebg-preview.png';
         this.width = 80;
-        this.speed = 2
+        this.speed = 5
         this.position = {
             x: CANVAS_WIDTH,
             y: Math.random() * 400

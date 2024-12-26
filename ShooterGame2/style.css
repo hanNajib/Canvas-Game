@@ -1,0 +1,156 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+}
+
+canvas {
+    border: 2px solid black;
+    cursor: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.selector {
+    display: flex;
+    gap: 20px;
+}
+
+.selector label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+#btn-play {
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px;
+    background-color: green;
+    border-radius: 8px;
+}
+
+#btn-instruction {
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px;
+    background-color: red;
+    border-radius: 8px;
+}
+
+input, select {
+    border: 3px solid #464646;
+    border-radius: 8px;
+    padding: 10px 30px;
+    background-color: #c4c4c4;
+}
+
+#instruction {
+    margin-left: 8rem;
+}
+
+.instruction {
+    color: white;
+    background-color: #262626;
+    padding: 10px 30px;
+    border-radius: 8px;
+    height: 50vh;
+    line-height: 2rem;
+    position: relative;
+    padding-top: 20px;
+}
+
+#btn-close {
+    cursor: pointer;
+    background-color: red;
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    width: 30px;
+    right: 5px;
+    top: 5px;
+    scale: .8;
+    border-radius: 4px;
+}
+
+.pause {
+    display: flex;
+    flex-direction: column;
+    background-color: #c4c4c4;
+    border: 3px solid #464646;
+    border-radius: 8px;
+    padding: 20px 4rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    gap: 5px;
+}
+
+.pause button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.leaderboard {
+    width: 15vw;
+    background-color: #242424;
+    height: 600px;
+    border: 2px solid #242424;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.leaderboard table {
+    margin-top: 10px;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.leaderboard table tr {
+    border-bottom: 2px solid white;
+}
+
+.leaderboard button {
+    width: 100%;
+    border: none;
+    border: black;
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 1rem;
+}
