@@ -1,0 +1,87 @@
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #171717;
+}
+
+#canvas {
+    width: 35vw;
+    height: 100vh;
+    background-color: #262626;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Menu */
+.instruction, .pause, .gameOver, .stats {
+    min-width: 17vw;
+    background-color: #262626;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 10px;
+    border-radius: 5px;
+    border: 1px solid #464646;
+}
+
+#gameOver, #pause {
+    position: absolute;
+}
+
+#stats {
+    position: absolute;
+    left: 0;
+}
+
+input {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background-color: red;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+/* btn */
+#btn-play {
+    width: 50%;
+}
+
+.group-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.group-btn button {
+    margin: 1px;
+}
+
+.pause {
+    text-align: center;
+}
+
+#btn-continue {
+    background-color: black;
+    border: 1px solid #464646;
+}
+

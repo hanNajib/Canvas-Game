@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virus Slayer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images\coronavirus-gaedba68d4_1280.png" type="image/x-icon">
+</head>
+<body>
+
+    <img src="./images/d.png" alt="" class="hidden" id="hitLabel">
+    <img src="./images/coronavirus-gaedba68d4_1280.png" alt="" class="hidden" id="virusImage" width="100">
+    
+    <canvas id="canvas" class="hidden"></canvas>
+    <div id="stats" class="hidden">
+        <div class="stats">
+            <h1>Virus Slayer</h1>
+            <p>Time : <span id="time">0</span></p>
+            <p>Score : <span id="score">0</span></p>
+            <p>Fail : <span id="fail">0</span></p>
+            <p>Player : <span id="playerName">HanNajib</span></p>
+            <div class="group-btn">
+                <button id="btn-restart">Restart</button>
+                <button id="btn-quit">Quit</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="instruction" class="">
+        <div class="instruction">
+            <h2>Instruction Virus Slayer</h2>
+            <ol>
+                <li>Input Username & click play</li>
+                <li>Destroy the virus with D F J K key</li>
+                <li>Reach Highscore</li>
+                <li>Enjoy</li>
+            </ol>
+            <input type="text" id="username" placeholder="Username" oninput="checkUsername()">
+            <button id="btn-play">Play</button>
+        </div>
+    </div>
+
+    <div id="pause" class="hidden">
+        <div class="pause">
+            <h2>Paused</h2>
+            <div class="group-btn">
+                <button id="btn-continue">Continue</button>
+                <button id="btn-restart">Restart</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameOver" class="hidden">
+        <div class="gameOver">
+            <h2>Game Over</h2>
+            <p>Time : <span id="final-time"></span></p>
+            <p>Score : <span id="final-score"></span></p>
+            <p>Player : <span id="final-playerName"></span></p>
+            <button id="btn-restart">Restart</button>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>
