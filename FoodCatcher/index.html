@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Catch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <img src="./assets/basket.png" alt="" class="hidden" id="basketImage">
+
+    <canvas id="canvas" class="hidden" width="400" height="600">
+        Your browser doesn't support canvas
+    </canvas>
+    <div id="stats" class="hidden">
+        <div class="menu">
+            <h4>Username : <span id="stats-username">HanNajib</span></h4>
+            <h4>Lives : <span id="stats-lives">0</span></h4>
+            <h4>Highscore : <span id="stats-highscore">0</span></h4>
+            <h4>Score : <span id="stats-score">0</span></h4>
+        </div>
+    </div>
+
+    <div id="pauseMenu" class="hidden">
+        <div class="menu">
+            <h1>Game Paused</h1>
+            <button id="btn-continue">Continue</button>
+            <button id="btn-restart">Restart</button>
+            <button onclick="location.reload()">Quit</button>
+        </div>
+    </div>
+
+    <div id="gameOver" class="hidden">
+        <div class="menu">
+            <h1>Game Over!</h1>
+            <button id="btn-restart">Restart</button>
+            <button onclick="location.reload()">Quit</button>
+        </div>
+    </div>
+
+    <div id="menu">
+        <div class="menu">
+            <h1>Food Dropper</h1>
+            <input type="text" name="username" id="username" placeholder="username">
+            <select name="difficulty" id="difficulty">
+                <option value="3000">Easy</option>
+                <option value="2000">Medium</option>
+                <option value="1000">Hard</option>
+            </select>
+            <label for="background-color">
+                Background Color : 
+            </label>
+            <input type="color" name="background" id="background-color" value="#75d6ff">
+            <button id="btn-start">Start</button>
+            <button id="btn-instruction">Instruction</button>
+            <button id="btn-leaderboard">Leaderboard</button>
+        </div>
+    </div>
+
+    <div id="instruction" class="hidden">
+        <div class="menu">
+            <h1>Instruction</h1>
+            <button id="btn-closeInstruction" class="btn-close">&times;</button>
+            <ol>
+                <li>Input your username</li>
+                <li>Select difficulty</li>
+                <li>Select Background color</li>
+                <li>Start the game</li>
+                <li>Catch food with the bucket as much as possible</li>
+                <li>The basket can be move with the key “d” for right and “a” for left</li>
+                <li>Dont catch trash and bomb</li>
+                <li>Enjoy the game</li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="leaderboard" class="hidden">
+        <div class="menu">
+            <h1>Leaderboard</h1>
+            <button id="btn-closeLeaderboard" class="btn-close">&times;</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardData">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>

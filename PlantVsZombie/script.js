@@ -1,74 +1,94 @@
-/** 
- * @type {HTMLCanvasElement}
- */
-const canvas = document.getElementById('canvas')
-const ctx = canvas.getContext('2d')
+class DynamicGame {
+    constructor(canvasId, startButtonId) {
+        this.canvas = document.getElementById(canvasId);
+        this.ctx = this.canvas.getContext('2d');
+        this.startButton = document.getElementById(startButtonId);
+        this.running = false; 
+        this.paused = false; 
+        this.timer = 0;       
+        this.lastTime = 0;    
 
-class Game {
-    constructor (canvas, ctx) {
-        this.canvas = canvas
-        this.ctx = ctx
-        this.CANVAS_WIDTH = this.canvas.width
-        this.CANVAS_HEIGHT = this.canvas.height
-        this.paused = false
-        this.running = true
-        this.lastFrameTime = 0
-
-        this.background = new Image()
-        this.background.src = './Sprites/General/Background.jpg'
-
-        this.gameLoop = this.gameLoop.bind(this) // Bind metode gameLoop
-
-        this.setupEventListeners()
-        this.start()
+        this.setupEventListeners();
     }
 
     setupEventListeners() {
-        document.addEventListener('keydown', (e) => {
-            let { key } = e
-            if(key === 'Escape') {
-                alert('dor')
+        this.startButton.addEventListener('click', () => {
+            if (!this.running) {
+                this.start();
+                this.startButton.disabled = true; 
             }
-        })
-    }
+        });
 
-    togglePause() {
-        if(this.running) {
-            this.paused = !this.paused
-            if(!this.paused) {
-                this.lastFrameTime = performance.now()
-                requestAnimationFrame(this.gameLoop)
-            }
-        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'p') this.togglePause();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'q') this.stop();
+        });
     }
 
     start() {
-        this.running = true
-        this.paused = false
-        this.lastFrameTime = performance.now()
-        requestAnimationFrame(this.gameLoop)
+        if (!this.running) {
+            this.running = true;
+            this.paused = false;
+            this.lastTime = performance.now();
+            this.timer = 0;
+            this.gameLoop();
+        }
     }
 
     stop() {
-        this.running = false
+        this.running = false;
+        this.paused = false;
+        this.timer = 0;
+        this.startButton.disabled = false;
+        this.clearCanvas();
     }
 
-    gameLoop() {
-        if(!this.running || this.paused) return;
-        this.render()
-        requestAnimationFrame(this.gameLoop)
+    togglePause() {
+        if (this.running) {
+            this.paused = !this.paused;
+        }
+    }
+
+    gameLoop(timestamp = 0) {
+        if (!this.running) return; 
+        const deltaTime = timestamp - this.lastTime;
+        this.lastTime = timestamp;
+
+        if (!this.paused) {
+            this.update(deltaTime);
+            this.render();
+        }
+
+        requestAnimationFrame((time) => this.gameLoop(time));
+    }
+
+    update(deltaTime) {
+        this.timer += deltaTime / 1000;
     }
 
     render() {
-        this.ctx.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT)
-        
-        // Hitung skala untuk mempertahankan rasio aspek
-        const scale = Math.min(this.CANVAS_WIDTH / this.background.width, this.CANVAS_HEIGHT / this.background.height)
-        const x = (this.CANVAS_WIDTH / 2) - (this.background.width / 2) * scale
-        const y = (this.CANVAS_HEIGHT / 2) - (this.background.height / 2) * scale
+        this.clearCanvas();
+        this.drawBackground();
+        this.drawTimer();
+    }
 
-        this.ctx.drawImage(this.background, x, y, this.background.width * scale, this.background.height * scale)
+    drawBackground() {
+        this.ctx.fillStyle = 'lightblue'; 
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    drawTimer() {
+        this.ctx.fillStyle = 'black';
+        this.ctx.font = '30px Arial';
+        this.ctx.fillText(`Timer: ${this.timer.toFixed(1)}s`, 10, 40);
+    }
+
+    clearCanvas() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 
-const game = new Game(canvas, ctx)
+const game = new DynamicGame('canvas', 'startButton');
